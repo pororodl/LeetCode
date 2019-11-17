@@ -36,6 +36,7 @@ class Solution:
             return False
         if s.val == t.val:
             return self.isEqual(s,t) or self.isSubtree(s.left,t) or self.isSubtree(s.right,t)
+        return self.isSubtree(s.left,t) or self.isSubtree(s.right,t)
 
     def isEqual(self,s,t):
         if t ==None and s==None:
@@ -44,6 +45,7 @@ class Solution:
             return False
         if s.val == t.val:
             return self.isEqual(s.left,t.left) and self.isEqual(s.right,t.right)
+
         return False
 
 
