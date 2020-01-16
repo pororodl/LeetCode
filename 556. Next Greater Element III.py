@@ -1,4 +1,24 @@
 class Solution:
+    def nextGreaterElement(self, n: int) -> int:
+        m = n
+        if n //10<1:
+            return n
+
+        nList=[]
+        while n>0:
+            nList.append(n%10)
+            n = n//10
+        nList.reverse()
+        self.nextPermutation(nList)
+        res = 0
+        for i in range(len(nList)):
+            res += nList[i]*(10**(len(nList)-i-1))
+        if res>0x7FFFFFFF or res<=m:
+            return -1
+
+        return res
+
+
     def nextPermutation(self, nums) -> None:
         """
         Do not return anything, modify nums in-place instead.
@@ -31,11 +51,14 @@ class Solution:
                 self.reverse(nums, i + 1, len(nums) - 1)
 
     def reverse(self, nums, i, j):  # 包括i，包括j
-        # print(nums)
-        n = (j - i + 1) // 2
-        for k in range(n):
-            temp = nums[i + k]
-            nums[i + k] = nums[j - k]
-            nums[j - k] = temp
-        # print(nums)
+            # print(nums)
+            n = (j - i + 1) // 2
+            for k in range(n):
+                temp = nums[i + k]
+                nums[i + k] = nums[j - k]
+                nums[j - k] = temp
 
+if __name__ == '__main__':
+    s = Solution()
+    n = 1999999999
+    print(s.nextGreaterElement(n))

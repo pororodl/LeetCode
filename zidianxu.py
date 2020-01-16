@@ -18,8 +18,9 @@ def calzhs(m,n):
     return Solution.zhs[m][n]
 
 
-def zidianxu(string1:str):
-    nlen = len(string1)
+def zidianxu(string1):
+    nlen =\
+        len(string1)
     if nlen>6:
         return 0
     if nlen == 1:
@@ -81,11 +82,6 @@ def i_th(k):
                 break
             start+=1
     return ans
-
-
-
-
-
 
 if __name__ == '__main__':
     # print(calzhs(5,3))
