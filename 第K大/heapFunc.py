@@ -1,7 +1,6 @@
 from typing import List
 import math
 class Solution:
-
     def buildMaxHeap(self,arr):
         for i in range(math.floor(len(arr) / 2) - 1, -1, -1):
             self.heapify(arr, i)

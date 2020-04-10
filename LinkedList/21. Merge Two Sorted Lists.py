@@ -5,7 +5,8 @@ class ListNode:
 
 
 class Solution:
-    def mergeTwoLists(self, l1: ListNode, l2: ListNode) -> ListNode:
+    # 双指针法
+    def mergeTwoLists(self , l1: ListNode, l2: ListNode) -> ListNode:
         if l1 == None:
             return l2 if l2 != None else None
         if l2 == None:
@@ -24,9 +25,20 @@ class Solution:
             newL.next = l2
         elif l2 == None:
             newL.next = l1
-
         return head.next
 
+    # 递归
+    def mergeTwoLists(self, l1: ListNode, l2: ListNode) -> ListNode:
+        if l1 == None:
+            return l2
+        elif l2 == None:
+            return l1
+        elif l1.val<l2.val:
+            l1.next = self.mergeTwoLists(l1.next,l2)
+            return l1
+        else:
+            l2.next = self.mergeTwoLists(l1,l2.next)
+            return l2
 
 if __name__ == '__main__':
     s = Solution()

@@ -49,6 +49,9 @@ def partition(arr, left, right):
 def swap(arr, i, j):
     arr[i], arr[j] = arr[j], arr[i]
 
+
+
+
 if __name__ == '__main__':
     nums = [6,7,8,5,3,4]
     # nums = [5,4,3,2,1]

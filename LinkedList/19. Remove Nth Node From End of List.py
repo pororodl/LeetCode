@@ -11,9 +11,9 @@ class Solution:
             return None
 
         pre = self.findNthFromEnd(head,n+1)
-        if pre == None:    # 删除头节点
+        if pre == None:    # 如果倒数第N+1个节点是空表明第N个节点是头结点，直接删除头节点
             head = head.next
-        elif pre!=None and n == 1:   # 删除尾节点
+        elif pre!=None and n == 1:   # 这里要注意判断如果第N个节点是尾结点的情况，则直接删除尾节点
             pre.next = None
         else:
             pre.next = pre.next.next
@@ -34,6 +34,26 @@ class Solution:
             i = i.next
             j = j.next
         return j
+
+
+# 当存在什么情况的时候适合用一个头结点来避免头结点和尾结点的讨论
+    # 这里是找到需要删除的节点的pre的pre
+    def removeNthFromEnd(self, head: ListNode, n: int) -> ListNode:
+        dummy = ListNode(0)
+        dummy.next = head
+        first = dummy
+        second = dummy
+        for i in range(n):
+            first = first.next
+        while first!=None:
+            first=first.next
+            second = second.next
+        second.next = second.next.next
+        return dummy.next
+
+
+
+
 
 if __name__ == '__main__':
     s = Solution()
